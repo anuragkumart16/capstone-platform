@@ -38,6 +38,7 @@ def SignupView(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         mentor = request.POST.get('mentor')
+        figma = request.POST.get('figma')
 
         if User.objects.filter(username=username).exists():
             messages.error(request, "Username already taken.")
@@ -52,7 +53,7 @@ def SignupView(request):
 
         login(request, user)
         # saving additional information to capstone model
-        instance = CapstoneModel(student = email,mentor=mentor)
+        instance = CapstoneModel(student = email,mentor=mentor,figma_url=figma)
         instance.save()
         messages.success(request,'Created Account Successfully!')
         return redirect('landingpage')  
