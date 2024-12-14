@@ -6,6 +6,18 @@
     <title>Admin Panel</title>
 </head>
 <body>
-    
+    <p id="user-name">Welcome, {{username}}</p>
+    <script>
+        // Get 'userdata' from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const userdata = urlParams.get('userdata');
+
+        // Update the content with 'userdata'
+        if (userdata) {
+            document.getElementById('user-name').textContent = userdata;
+        } else {
+            document.getElementById('user-name').textContent = 'Guest';
+        }
+    </script>
 </body>
 </html>
