@@ -147,9 +147,19 @@
     <div class=" workarea">
         <div class="head-holder flex-col">
             <h1 class="heading">Feeling Stuck</h1>
+            <div style="display: flex; align-items:center; justify-content: center; color: #ffffff;">
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }} hii there</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
             <p class="head-p">Don’t hesitate!   Take help from your mentor</p>
         </div>
         <form action="signin" method="post">
+            {% csrf_token %}
                 <div class="container">
                     <div class="flex-col">
                         <label for="query">Ask Queries</label>

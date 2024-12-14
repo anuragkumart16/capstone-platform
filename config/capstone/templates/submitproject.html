@@ -150,8 +150,18 @@
     <div class=" workarea">
         <div class="head-holder flex-col">
             <h1 class="heading">Submit Your Project</h1>
+            <div style="display: flex; align-items:center; justify-content: center; color: #ffffff;">
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }} hii there</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
         </div>
         <form action="signin" method="post">
+            {% csrf_token %}
                 <div class="container">
                     <div class="flex-col">
                         <label for="github">Github URL*</label>

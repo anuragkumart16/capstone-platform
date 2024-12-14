@@ -15,7 +15,6 @@ class QueryModel(models.Model):
     file = models.FileField(blank=True,upload_to='uploads/')
     student = models.CharField(max_length=200)
     answer = models.CharField(max_length=1000,null=True,blank=True)
-
     def __str__(self):
         return f'{self.query} {self.mentor} {self.student}'
 

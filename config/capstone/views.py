@@ -53,7 +53,7 @@ def SignupView(request):
 
         login(request, user)
         # saving additional information to capstone model
-        instance = CapstoneModel(student = email,mentor=mentor,figma_url=figma)
+        instance = CapstoneModel(student = username,mentor=mentor,figma_link=figma)
         instance.save()
         messages.success(request,'Created Account Successfully!')
         return redirect('landingpage')  
@@ -61,14 +61,14 @@ def SignupView(request):
         return render(request,'signup.html')
     
 
-@login_required
+# @login_required
 def LandingView(request):
-    referer = request.META.get('HTTP_REFERER')  
-    if not referer:
-        return HttpResponseForbidden("Access denied: direct access not allowed")
+    # referer = request.META.get('HTTP_REFERER')  
+    # if not referer:
+    #     return HttpResponseForbidden("Access denied: direct access not allowed")
     return render('landingpage.html')
 
-@login_required
+# @login_required
 def QuriesView(request):
     if request.method == 'POST':
         # getting all values
@@ -85,7 +85,7 @@ def QuriesView(request):
     else:
         return render(request,'queries.html')
 
-@login_required
+# @login_required
 def SubmitProjectView(request):
     if request.method == 'POST':
         name = request.user.username
@@ -145,7 +145,6 @@ class otprequest(APIView):
         server.login(from_address, password)
         server.sendmail(from_address, to_address, msg.as_string())
         server.quit()
-
         return Response({
             'status':True,
             'message':'Otp succesfully sent',
