@@ -17,7 +17,8 @@ from .serializers import OtprequestSerializer
 
 # Create your views here.
 def HomeView(request):
-    return render(request,'index.html')
+    # return render(request,'index.html')
+    return redirect('login')
 
 def LoginView(request):
     if request.method == "POST":
@@ -26,7 +27,8 @@ def LoginView(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('landingpage') 
+            messages.success(request, "Signin Successful!")
+            return redirect('home') 
         else:
             messages.error(request, "Invalid username or password")
     return render(request, 'signin.html')  
@@ -66,15 +68,19 @@ def LandingView(request):
     # referer = request.META.get('HTTP_REFERER')  
     # if not referer:
     #     return HttpResponseForbidden("Access denied: direct access not allowed")
-    return render('landingpage.html')
+    return render(request,'landingpage.html')
 
 # @login_required
 def QuriesView(request):
     if request.method == 'POST':
         # getting all values
-        student = request.user.username()
+        student = request.user.username
         query = request.POST.get('query')
-        file = request.Files['file']
+        file = request.FILES['file']
+        # checking if the user is signed in
+        if student == "":
+            messages.warning(request,'You need to SignIn First!')
+            return redirect('signin')
         # automatically filling mentor
         instance = CapstoneModel.objects.get(student = student)
         mentor = instance.mentor
@@ -92,8 +98,11 @@ def SubmitProjectView(request):
         hosted_link = request.POST.get('hosted_link')
         github_link = request.POST.get('github_link')
         video_link = request.POST.get('video_link')
+        if name == "":
+            messages.warning(request,'You need to SignIn First!')
+            return redirect('submitproject')
         try:
-            instance = SubmissionModel(hosted_link=hosted_link,github_link=github_link,video_link=video_link,student=name)
+            instance = SubmissionModel(hosted_link=hosted_link,github_link=github_link,explanation_link=video_link,student=name)
             instance.save()
             messages.success(request,'Project Submitted Successfully! We will be sending you the results soon.')
             return redirect('submitproject')
@@ -150,3 +159,8 @@ class otprequest(APIView):
             'message':'Otp succesfully sent',
             'otp': f'{otp}'
         },status.HTTP_200_OK)
+
+
+
+
+        

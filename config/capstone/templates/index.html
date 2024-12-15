@@ -1,11 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anurag</title>
+    <style>
+        /* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0b0b16;
+  color: #ffffff;
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto;
+  gap: 10px;
+  padding: 20px;
+}
+
+/* Left Side Menu */
+.side-menu {
+  background: #1b1b2f;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+  padding: 20px;
+}
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+.side-menu li {
+  margin: 10px 0;
+}
+
+/* Main Submission Box */
+.submission-box {
+  background: linear-gradient(135deg, #9f59ff, #6537b1);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  padding: 20px;
+  text-align: center;
+}
+.submission-box h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+/* Circle */
+.circle {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, #7137ff, #4b0e98);
+  border-radius: 50%;
+  margin: 20px auto;
+}
+
+/* Top Right Div */
+.top-right, .stats {
+  background: #1b1b2f;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Bottom Section */
+.bottom-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.mentors, .queries, .push-code, .top-projects {
+  background: #1b1b2f;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  padding: 20px;
+  text-align: center;
+}
+    </style>
 </head>
+
 <body>
-    nothin here
+    <div class="container">
+        <div class="side-menu">
+            <div class="logo"></div>
+            <ul>
+                <li>Register</li>
+                <li>Login</li>
+                <li>Submit Project</li>
+                <li>Ask Queries</li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="submission-box">
+                <h2>Submit within</h2>
+                <h1>3 days 10 hrs</h1>
+            </div>
+            <div class="circle"></div>
+            <div class="top-right">
+                <p>7<br>Queries Resolved</p>
+            </div>
+            <div class="stats">
+                <p>110<br>Submitted Projects</p>
+            </div>
+        </div>
+        <div class="bottom-section">
+            <div class="mentors">
+                <p>14<br>Mentors</p>
+            </div>
+            <div class="queries">
+                <p>10<br>Queries Raised</p>
+            </div>
+            <div class="push-code">
+                <p>Push the code<br>Explore the branch of web-dev</p>
+            </div>
+            <div class="top-projects">
+                <p>Top Projects<br>NST Capstone Showcase</p>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

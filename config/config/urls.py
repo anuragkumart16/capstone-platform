@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from capstone.views import LoginView,SignupView,LandingView,HomeView,QuriesView,SubmitProjectView,otprequest
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -18,4 +20,7 @@ urlpatterns = [
     path('tokenrefresh', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
-
+if settings.DEBUG:  # Only serve media files during development
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

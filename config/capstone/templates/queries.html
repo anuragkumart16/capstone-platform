@@ -149,16 +149,16 @@
             <h1 class="heading">Feeling Stuck</h1>
             <div style="display: flex; align-items:center; justify-content: center; color: #ffffff;">
                 {% if messages %}
-                    <ul>
+                    <ul style='list-style-type: none;'>
                         {% for message in messages %}
-                            <li>{{ message }} hii there</li>
+                            <li>{{ message }} </li>
                         {% endfor %}
                     </ul>
                 {% endif %}
             </div>
             <p class="head-p">Don’t hesitate!   Take help from your mentor</p>
         </div>
-        <form action="signin" method="post">
+        <form action="query" method="post" enctype="multipart/form-data">
             {% csrf_token %}
                 <div class="container">
                     <div class="flex-col">
@@ -166,7 +166,7 @@
                         <input type="text" name="query" required>
                     </div>
                     <div class="flex-col">
-                        <label for="file">Attach File*</label>
+                        <label for="file">Attach File(optional)</label>
                         <input type="file" name="file" required>
                     </div>
                 </div>

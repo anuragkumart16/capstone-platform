@@ -38,7 +38,7 @@ class CapstoneModel(models.Model):
         return f'{self.student} {self.mentor}'
 
 class SubmissionModel(models.Model):
-    student = models.EmailField(default=None)
+    student = models.EmailField(default=None,unique=True)
     hosted_link = models.CharField(max_length=800,default=None)
     github_link = models.CharField(max_length=800,default=None)
     explanation_link = models.CharField(max_length=800,default=None)

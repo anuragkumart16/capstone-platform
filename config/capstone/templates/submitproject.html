@@ -150,30 +150,31 @@
     <div class=" workarea">
         <div class="head-holder flex-col">
             <h1 class="heading">Submit Your Project</h1>
+            <p class="head-p">Remember you can submit only once!</p>
             <div style="display: flex; align-items:center; justify-content: center; color: #ffffff;">
                 {% if messages %}
-                    <ul>
+                    <ul style="list-style-type: none;">
                         {% for message in messages %}
-                            <li>{{ message }} hii there</li>
+                            <li>{{ message }}</li>
                         {% endfor %}
                     </ul>
                 {% endif %}
             </div>
         </div>
-        <form action="signin" method="post">
+        <form action="submitproject" method="post">
             {% csrf_token %}
                 <div class="container">
                     <div class="flex-col">
-                        <label for="github">Github URL*</label>
-                        <input type="text" name="github" required>
+                        <label for="github_link">Github URL*</label>
+                        <input type="text" name="github_link" required>
                     </div>
                     <div class="flex-col">
-                        <label for="hosted-url">Hosted URL (optional)</label>
-                        <input type="text" name="hosted-url" required>
+                        <label for="hosted_link">Hosted URL (optional)</label>
+                        <input type="text" name="hosted_link" required>
                     </div>
                     <div class="flex-col">
-                        <label for="video-explanation">Video Explanation*</label>
-                        <input type="text" name="video-explanation" required>
+                        <label for="video_link">Video Explanation*</label>
+                        <input type="text" name="video_link" required>
                     </div>
                     
                 </div>
