@@ -6,6 +6,7 @@ class QueryModel(models.Model):
     file = models.FileField(blank=True,upload_to='uploads/')
     student = models.CharField(max_length=200)
     answer = models.CharField(max_length=1000,null=True,blank=True)
+    is_answered = models.BooleanField(default=False)
     def __str__(self):
         return f'{self.query} {self.mentor} {self.student}'
 
@@ -26,5 +27,3 @@ class SubmissionModel(models.Model):
     def __str__(self):
         return self.student
     
-class ResultModel(models.Model):
-    name = models.CharField(max_length=50,blank=False,unique=True)

@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import MentorModel
+from .models import MarksModel
 
-class MentorSerializer(serializers.ModelSerializer):
+class MarksModelSerializers(serializers.ModelSerializer):
     class Meta:
-        model = MentorModel
+        model = MarksModel
         fields = '__all__'

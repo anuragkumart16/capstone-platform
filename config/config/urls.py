@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from capstone.views import LoginView,SignupView,LandingView,HomeView,QuriesView,SubmitProjectView,otprequest
-from panel.views import MentorLoginAPIView
+from panel.views import MentorLoginAPIView,GetStudentDetails,GetUserData,SetMarksView,QueryHandlingView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -17,6 +17,10 @@ urlpatterns = [
 
     # api-end-points
     path('mentor-login',MentorLoginAPIView.as_view(),name='mentor-login'),
+    path('mentor-student-data',GetStudentDetails.as_view(),name='mentor-student-data'),
+    path('get-student-data',GetUserData.as_view(),name='get-user-data'),
+    path('set-marks',SetMarksView.as_view(),name='set-marks'),
+    path('query-handler',QueryHandlingView.as_view(),name='query-handler')
 ]
 
 if settings.DEBUG:  # Only serve media files during development
