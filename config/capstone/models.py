@@ -1,14 +1,5 @@
 from django.db import models
 
-class MentorModel(models.Model):
-    name = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200,unique=True)
-    password = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
-
-
 class QueryModel(models.Model):
     query = models.CharField(max_length=1000)
     mentor = models.CharField(max_length=200)
@@ -19,17 +10,6 @@ class QueryModel(models.Model):
         return f'{self.query} {self.mentor} {self.student}'
 
 class CapstoneModel(models.Model):
-    Mentor_Names = [
-        ('Rishab Sir', 'Rishab Sir'),
-        ('Vishal Sir', 'Vishal Sir'),
-        ('Abhiman Sir', 'Abhiman Sir'),
-        ('Naman Sir', 'Naman Sir'),
-        ('Piyush Sir', 'Piyush Sir'),
-        ('Ayush Sir', 'Ayush Sir'),
-        ('Divy Sir', 'Divy Sir'),
-        ('Adit Sir', 'Adit Sir'),
-        ('Param Sir', 'Param Sir'),
-    ]
     student = models.CharField(blank=False,max_length=200)
     mentor = models.CharField(blank=False,max_length=200)
     figma_link = models.CharField(max_length=800)

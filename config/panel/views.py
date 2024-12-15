@@ -7,26 +7,33 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-# from .serializers import UserSerializer
+from .serializers import MentorSerializer
 
 
 # Create your views here.
-def LoginView(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+class MentorLoginAPIView(APIView):
+    def post(self,request):
+        data = request.data
+        username = data['username']
+        password = data['password']
         try:
             instance = MentorModel.objects.get(name=username)
             if instance.password == password:
-                return redirect('landingpage', userdata = username)
+                return Response({
+                    'LoggedIn': True,
+                    'message': 'Login Successful!'
+                },status.HTTP_200_OK)
             else:
-                messages.warning(request,'Check Password!')
-                return render(request,'index.html')
+                return Response({
+                    'LoggedIn':False,
+                    'message': 'Login Failed!, Check Password!'
+                },status.HTTP_401_UNAUTHORIZED)
         except MentorModel.DoesNotExist:
-            messages.warning(request,'No User Found!')
-            return render(request,'index.html')
-    else:
-        return render(request,'index.html')
+                return Response({
+                    'LoggedIn': False,
+                    'message':'User Not Found, Contact Admin'
+                })
+        
 
 
 def SignupView(request):

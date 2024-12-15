@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from capstone.views import LoginView,SignupView,LandingView,HomeView,QuriesView,SubmitProjectView,otprequest
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from panel.views import MentorLoginAPIView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -16,8 +16,7 @@ urlpatterns = [
     path('optrequest',otprequest.as_view(),name='otpcheck'),
 
     # api-end-points
-    path('token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('tokenrefresh', TokenRefreshView.as_view(), name='token_refresh'),
+    path('mentor-login',MentorLoginAPIView.as_view(),name='mentor-login'),
 ]
 
 if settings.DEBUG:  # Only serve media files during development
