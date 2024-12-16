@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 import smtplib
 
 
-# Create your views here.
+# Create your views here. 
 class MentorLoginAPIView(APIView):
     def post(self, request):
         data = request.data
@@ -91,9 +91,9 @@ class GetUserData(APIView):
                 "figma": figma,
                 "mentor": mentor,
                 "query": query_data,
-                "hosted-link": hosted_link,
-                "github-link": github_link,
-                "explanation-link": explanation_link,
+                "hosted_link": hosted_link,
+                "github_link": github_link,
+                "explanation_link": explanation_link,
                 "marks": marks_data,
             },
             status.HTTP_200_OK,
@@ -225,9 +225,11 @@ class QueryHandlingView(APIView):
         data = request.data
         id = data['id']
         answer = data['answer']
+        print(answer)
         instance = QueryModel.objects.get(id=id)
         instance.answer = answer
         instance.is_answered = True
+        instance.save()
         userName = instance.student
         user = User.objects.get(username=userName)
         email = user.email
@@ -237,7 +239,8 @@ class QueryHandlingView(APIView):
         },status.HTTP_200_OK)
 
         
-    def get(self,request):
+class GetQueryView(APIView):
+    def post(self,request):
         data = request.data
         mentor = data['mentor']
         try:
@@ -250,5 +253,3 @@ class QueryHandlingView(APIView):
             'status': 200,
             'data':query_data
         },status.HTTP_200_OK)
-
-        
