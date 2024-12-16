@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="static/static-css/index.css">
+</head>
+<body id="body">
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="static/static-img/logo.png" alt="logo" class="logo-img">
+            </div>
+            <div class="menu">
+                <a href="#" class="menu-item active">Panel</a>
+                <a href="#" onclick="queryPage()" class="menu-item">Queries</a>
+                <a href="index.html" class="menu-item">Logout</a>
+            </div>
+        </nav>
+    </header>
+    <main id="main">
+        <div class="modal" id="modal" style="display: none;">
+            <div class="modal-nav">
+                <a  id="modal-figma">Figma File</a>
+                <a  id="modal-hosted-link">Hosted Link</a>
+                <a  id="modal-github">Github Link</a>
+                <a  id="modal-explanation">Video Explanation</a>
+            </div>
+            <div class="modal-data">
+                <h3>Student Detail</h3>
+                <div class="details-holder">
+                    <div class="modal-input-group">
+                        <label>Username</label>
+                        <input type="text" id="modal-username"  disabled>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Email</label>
+                        <input type="text" id="modal-email"  disabled>
+                    </div>
+                </div>
+                <h3 class="modal-heading">Marks</h3>
+                <div class="modal-marks-holder">
+                    <div class="modal-input-group">
+                        <label>Html Structure</label>
+                        <input type="number" id="modal-html-structure">
+                    </div>
+                    <div class="modal-input-group">
+                        <label>CSS Design</label>
+                        <input type="number" id="modal-css-design">
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Responsiveness</label>
+                        <input type="number" id="modal-responsiveness">
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Functional Design</label>
+                        <input type="number" id="modal-funtional-design">
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Debugging</label>
+                        <input type="number" id="modal-debugging">
+                    </div>
+                </div>
+                <div class="modal-btn-group">
+                    <button onclick="updateMarks()">Update Details</button>
+                    <button id="close-modal" onclick="closeModal()">Close</button>
+
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <thead class="card">
+                <th>Username</th>
+                <th>Submission Status</th>
+                <th>Email</th>
+            </thead>
+            
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </main>
+    <script src="static/static-js/land.js"></script>
+</body>
+</html>

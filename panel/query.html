@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="static/static-css/index.css">
+</head>
+<body id="body">
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="static/static-img/logo.png" alt="logo" class="logo-img">
+            </div>
+            <div class="menu">
+                <a href="#" onclick="landPage()" class="menu-item">Panel</a>
+                <a href="#" class="menu-item active">Queries</a>
+                <a href="index.html" class="menu-item">Logout</a>
+            </div>
+        </nav>
+    </header>
+    <main id="main">
+        <div class="modal" id="modal" style="display: none;">
+            <div class="modal-data">
+                <h3>Student Detail</h3>
+                <div class="details-holder">
+                    <div class="modal-input-group">
+                        <label>Username</label>
+                        <input type="text" id="modal-username"  disabled>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>File Link</label>
+                        <a  id="modal-file-link">File Link</a>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Response</label>
+                        <textarea id="modal-response"></textarea>
+                    </div>
+                </div>
+                <h3 class="modal-heading" id="modal-query"></h3>
+
+                
+
+
+                <div class="modal-btn-group">
+                    <button onclick="sendQueryResponse()">Update Details</button>
+                    <button id="close-modal" onclick="closeModal()">Close</button>
+                </div>
+
+            </div>
+        </div>
+        <table class="table">
+            <thead class="card">
+                <th>Username</th>
+                <th>Is Answered</th>
+            </thead>
+            
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </main>
+    <script src="static/static-js/query.js"></script>
+</body>
+</html>
